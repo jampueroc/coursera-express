@@ -1,0 +1,26 @@
+extends ../layout
+
+block config
+    - var pageTitle = "Actualizar bicicleta";
+    - var bodyClass = 'sb-nav-fixed';
+    - var sidenavStyle = 'sb-sidenav-dark';
+
+block content
+    form(action=`/bikes/${bike.id}/update`, method='post')
+        .form-group
+            label.small.mb-1(for='id') Id
+            input#id.form-control.py-4(type='text', name='id', value= bike.id)
+        .form-group
+            label.small.mb-1(for='color') Color
+            input#color.form-control.py-4(type='text', name='color', value= bike.color)
+        .form-group
+            label.small.mb-1(for='model') Modelo
+            input#model.form-control.py-4(type='text', name='model', value= bike.model)
+        .form-group
+            label.small.mb-1(for='lat') Latitud
+            input#lat.form-control.py-4(type='number', step='0.001', name='lat', value= bike.location[0])
+        .form-group
+            label.small.mb-1(for='lng') Longitud
+            input#lng.form-control.py-4(type='number', step='0.001', name='lng', value= bike.location[1])
+        .form-group
+            button.btn.btn-info(type='submit') Crear

@@ -1,56 +1,16 @@
-extends dashboard.pug
+extends layout
 
 block config
-  - var bodyClass = 'sb-nav-fixed'
-  - var pageTitle = 'Dashboard';
+  - var pageTitle = "Inicio";
+  - var bodyClass = 'sb-nav-fixed';
   - var index = true;
-  - var sidenavStyle = 'sb-sidenav-dark'
-
-append css
-  link(href='https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css', rel='stylesheet', crossorigin='anonymous')
+  - var sidenavStyle = 'sb-sidenav-dark';
 
 block content
-  .container-fluid
-    include includes/page-header.pug
-    .row
-      .col-xl-3.col-md-6
-        .card.bg-primary.text-white.mb-4
-          .card-body
-            | Primary Card
-          .card-footer.d-flex.align-items-center.justify-content-between
-            a(href='#').small.text-white.stretched-link
-              | View Details
-            .small.text-white
-              i.fas.fa-angle-right
-      .col-xl-3.col-md-6
-        .card.bg-warning.text-white.mb-4
-          .card-body
-            | Warning Card
-          .card-footer.d-flex.align-items-center.justify-content-between
-            a(href='#').small.text-white.stretched-link
-              | View Details
-            .small.text-white
-              i.fas.fa-angle-right
-      .col-xl-3.col-md-6
-        .card.bg-success.text-white.mb-4
-          .card-body
-            | Success Card
-          .card-footer.d-flex.align-items-center.justify-content-between
-            a(href='#').small.text-white.stretched-link
-              | View Details
-            .small.text-white
-              i.fas.fa-angle-right
-      .col-xl-3.col-md-6
-        .card.bg-danger.text-white.mb-4
-          .card-body
-            | Danger Card
-          .card-footer.d-flex.align-items-center.justify-content-between
-            a(href='#').small.text-white.stretched-link
-              | View Details
-            .small.text-white
-              i.fas.fa-angle-right
-
-
+    .jumbotron
+      h1= 'Bienvenido a '+ title
     .row-cols-1
       #map
 
+append scripts
+  script(src='/javascripts/map.js')

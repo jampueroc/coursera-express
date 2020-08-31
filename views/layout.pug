@@ -3,7 +3,7 @@ doctype html
 block config
     - var pageTitle = "Page Title"
 
-html(lang='en')
+html(lang='es')
 
     head
 
@@ -26,7 +26,11 @@ html(lang='en')
                 
                 main
 
-                    block content
+                    .container-fluid
+                        include includes/page-header.pug
+
+                    .container
+                        block content
                     
                 include includes/footer.pug
 

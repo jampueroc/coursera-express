@@ -1,0 +1,39 @@
+extends ../layout
+
+block config
+    - var pageTitle = "Listado Bicicletas";
+    - var bodyClass = 'sb-nav-fixed';
+    - var sidenavStyle = 'sb-sidenav-dark';
+
+
+append css
+    link(href='https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css', rel='stylesheet', crossorigin='anonymous')
+
+block content
+    .row-cols-1
+        table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+            thead
+                tr
+                    th(scope='col') #
+                    th(scope='col') Color
+                    th(scope='col') Modelo
+                    th(scope='col') Ubicación
+                    th(scope='col')
+                    th(scope='col')
+            tbody
+                each bike in bikes
+                    tr
+                        th(scope='row')= bike.id
+                        td= bike.color
+                        td= bike.model
+                        td= bike.location
+                        td
+                            form.inline(method='get', action='/bikes/'+ bike.id + '/update')
+                                button.btn.btn-primary(type='submit') Editar
+                        td
+                            form.inline(method='post', action='/bikes/'+ bike.id + '/delete')
+                                button.btn.btn-danger(type='submit') Borrar
+
+append scripts
+    script(src='https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js', crossorigin='anonymous')
+    script(src='https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js', crossorigin='anonymous')

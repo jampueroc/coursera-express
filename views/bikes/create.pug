@@ -1,0 +1,26 @@
+extends ../layout
+
+block config
+    - var pageTitle = "Agregar bicicleta";
+    - var bodyClass = 'sb-nav-fixed';
+    - var sidenavStyle = 'sb-sidenav-dark';
+
+block content
+    form(action='/bikes/create', method='post')
+        .form-group
+            label.small.mb-1(for='id') Id
+            input#id.form-control.py-4(type='text', name='id')
+        .form-group
+            label.small.mb-1(for='color') Color
+            input#color.form-control.py-4(type='text', name='color')
+        .form-group
+            label.small.mb-1(for='model') Modelo
+            input#model.form-control.py-4(type='text', name='model')
+        .form-group
+            label.small.mb-1(for='lat') Latitud
+            input#lat.form-control.py-4(type='number', step='0.001', name='lat')
+        .form-group
+            label.small.mb-1(for='lng') Longitud
+            input#lng.form-control.py-4(type='number', step='0.001', name='lng')
+        .form-group
+            button.btn.btn-info(type='submit') Crear
