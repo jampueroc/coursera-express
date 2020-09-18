@@ -1,16 +1,22 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+const DbConnector = require("./utils/db-connector");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var bikesRouter = require('./routes/bikes');
-var apiRouter = require('./routes/bikes.api');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const sassMiddleware = require('node-sass-middleware');
 
-var app = express();
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const bikesRouter = require('./routes/bikes');
+const apiRouter = require('./routes/bikes.api');
+const apiUsersRouter = require('./routes/users.api');
+
+const app = express();
+
+DbConnector.default.connect();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +38,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/bikes', bikesRouter);
 app.use('/api/bikes', apiRouter);
+app.use('/api/users', apiUsersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
